@@ -6,7 +6,7 @@ const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 
 const app = express();
-const PORT = 3005;
+const PORT = process.env.PORT || 3005;
 
 // Configuración
 app.use(cors());
