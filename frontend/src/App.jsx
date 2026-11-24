@@ -3,7 +3,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useRequests } from "./context/RequestContext.jsx";
 
-const API_URL = "http://localhost:3005/api";
+const API_URL = "https://proyecto-circulo-viajes.onrender.com/api";
 
 function Inicio() {
   const [beneficios, setBeneficios] = useState([]);
