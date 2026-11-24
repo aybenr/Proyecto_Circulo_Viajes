@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:3005/api";
+const API_URL = "https://proyecto-circulo-viajes.onrender.com/api";
 
 const RequestContext = createContext();
 
