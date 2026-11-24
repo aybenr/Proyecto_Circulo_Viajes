@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Gestión de Beneficios - Empleados</title>
+	  <link rel="stylesheet" href="estilos.css">
+	</head>
+	<body>
+		<header class="encabezado">
+			<h1>Portal de Beneficios de Empleados</h1>
+			<p>Solicitud y consulta digital de beneficios (sin papel)</p>
+		</header>
+
+		<main class="contenedor">
+		
+			<section class="tarjeta">
+				<h2>Beneficios disponibles</h2>
+				<div id="lista-beneficios" class="grid-beneficios"></div>
+			</section>
+
+			<section class="tarjeta">
+				<h2>Solicitar un beneficio</h2>
+				
+				<form id="form-solicitud" class="formulario">
+
+					<div class="campo">
+						<label for="empleado">Nombre del empleado</label>
+						<input type="text" id="empleado" required placeholder="Ej. Andrés Ramos">
+					</div>
+
+					<div class="campo">
+						<label for="area">Área o dependencia</label>
+						<input type="text" id="area" required placeholder="Ej. Operaciones / TI">
+					</div>
+
+					<div class="campo">
+						<label for="beneficio">Beneficio</label>
+						
+						<select id="beneficio" required>
+							<option value="">Selecciona un beneficio...</option>
+						</select>
+					</div>
+
+					<div class="campo">
+						<label for="motivo">Motivo u observación</label>
+						<input type="text" id="motivo" required placeholder="Ej. Solicitud de apoyo o día libre">
+					</div>
+
+					<button type="submit" class="btn-primario">Enviar solicitud</button>
+					
+				</form>
+				
+			</section>
+
+			<section class="tarjeta">
+				<div class="cabecera-tabla">
+					<h2>Solicitudes registradas</h2>
+					<button type="button" id="btn-reiniciar" class="btn-secundario">Restablecer datos base</button>
+				</div>
+
+				<div class="tabla-responsive">
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Empleado</th>
+								<th>Área</th>
+								<th>Beneficio</th>
+								<th>Motivo</th>
+								<th>Estado</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						
+						<tbody id="tabla-solicitudes"></tbody>
+					
+					</table>
+			  
+				</div>
+			
+			</section>
+		
+		</main>
+
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="app.js"></script>
+
+	</body>
+
+</html>

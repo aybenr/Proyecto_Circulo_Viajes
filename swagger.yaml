@@ -1,0 +1,123 @@
+openapi: 3.0.3
+info:
+  title: API - Gestión de Solicitudes de Beneficios de Empleados
+  description: >
+    Especificación de endpoints REST para consultar beneficios disponibles,
+    registrar nuevas solicitudes de empleados y cancelar solicitudes existentes.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3005/api
+    description: Entorno de referencia local (opcional para pruebas simuladas)
+
+paths:
+  /beneficios:
+    get:
+      summary: Listar beneficios disponibles
+      description: Retorna el catálogo de beneficios vigentes para los empleados.
+      responses:
+        "200":
+          description: Lista de beneficios obtenida correctamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Beneficio"
+
+  /solicitudes:
+    get:
+      summary: Consultar solicitudes de beneficios
+      description: Retorna las solicitudes registradas en el sistema.
+      responses:
+        "200":
+          description: Listado de solicitudes obtenido correctamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Solicitud"
+    post:
+      summary: Registrar una nueva solicitud de beneficio
+      description: Valida los datos enviados por el empleado y crea una solicitud.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NuevaSolicitud"
+      responses:
+        "201":
+          description: Solicitud creada correctamente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solicitud"
+        "400":
+          description: Datos incompletos o inválidos en el formulario.
+
+  /solicitudes/{id}:
+    delete:
+      summary: Eliminar o cancelar una solicitud
+      description: Elimina una solicitud existente según su identificador.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identificador único de la solicitud
+          schema:
+            type: integer
+            example: 101
+      responses:
+        "200":
+          description: Solicitud eliminada correctamente.
+        "404":
+          description: No se encontró una solicitud con ese ID.
+
+components:
+  schemas:
+    Beneficio:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: Auxilio de estudio
+        descripcion:
+          type: string
+          example: Apoyo económico para cursos, diplomados o formación técnica.
+
+    NuevaSolicitud:
+      type: object
+      required:
+        - empleado
+        - area
+        - beneficio
+        - motivo
+      properties:
+        empleado:
+          type: string
+          example: Andrés Ramos
+        area:
+          type: string
+          example: Operaciones / TI
+        beneficio:
+          type: string
+          example: Día libre compensatorio
+        motivo:
+          type: string
+          example: Trámite personal programado
+
+    Solicitud:
+      allOf:
+        - $ref: "#/components/schemas/NuevaSolicitud"
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 103
+            estado:
+              type: string
+              example: En revisión

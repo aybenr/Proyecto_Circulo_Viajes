@@ -1,0 +1,37 @@
+{
+  "beneficios": [
+    {
+      "id": 1,
+      "nombre": "Auxilio de estudio",
+      "descripcion": "Apoyo económico para cursos, diplomados o formación técnica."
+    },
+    {
+      "id": 2,
+      "nombre": "Día libre compensatorio",
+      "descripcion": "Jornada libre adicional por cumplimiento de metas o apoyo en eventos."
+    },
+    {
+      "id": 3,
+      "nombre": "Bono de salud y bienestar",
+      "descripcion": "Auxilio para consultas médicas, óptica o actividades de bienestar."
+    }
+  ],
+  "solicitudes": [
+    {
+      "id": 101,
+      "empleado": "Laura Gómez",
+      "area": "Operaciones",
+      "beneficio": "Auxilio de estudio",
+      "motivo": "Diplomado en desarrollo web",
+      "estado": "En revisión"
+    },
+    {
+      "id": 102,
+      "empleado": "Carlos Pérez",
+      "area": "Soporte",
+      "beneficio": "Día libre compensatorio",
+      "motivo": "Trámite personal programado",
+      "estado": "Aprobada"
+    }
+  ]
+}
